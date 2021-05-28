@@ -1,0 +1,49 @@
+<body>
+  <div class="track-container" *ngFor="let track of apiData | async">
+    <div class="div-img">
+      <img
+        class="thumbnail"
+        title="Ouça agora: {{ track.name }}"
+        src="{{ track.thumbnail }}"
+      />
+    </div>
+    <div class="div-infos">
+      <span class="date">{{ track.createdAt | date }}</span>
+      <div class="div-music-status">
+        <div class="dvms-1">
+          <p class="track-name">{{ track.name }}</p>
+          <p class="track-artist">{{ track.artist }}</p>
+        </div>
+        <div class="dvms-2">
+          <p class="track-strand">{{ track.strand | uppercase }}</p>
+        </div>
+      </div>
+      <div class="div-functions">
+        <div class="container-functions">
+          <div class="div-lcp">
+            <i class="material-icons" (click)="countLike(track)">favorite</i>
+            <p class="p-lcp">{{ track.like }}</p>
+            <i class="material-icons">message</i>
+            <p class="p-lcp">{{ track.comments }}</p>
+            <i class="material-icons">play_arrow</i>
+            <p class="p-lcp">{{ track.plays }}</p>
+            <i class="material-icons" id="download" (click)="alertDownload()"
+              >file_download</i
+            >
+            <p class="p-lcp-d" id="download">DOWNLOAD</p>
+          </div>
+          <div class="btn-share">
+            <a><i class="material-icons" (click)="alertShare()">repeat</i></a>
+          </div>
+        </div>
+        <div class="feedback">
+          <input
+            type="text"
+            name="feedback"
+            placeholder="Deixe seu feedback..."
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
